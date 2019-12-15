@@ -2,7 +2,7 @@
 
 namespace Action;
 
-class SetName
+class SetName implements \lib\IAction
 {
 
 	public function __invoke(\lib\Input $input): \lib\Output
