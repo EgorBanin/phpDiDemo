@@ -5,9 +5,16 @@ namespace Action;
 class SayHello implements \lib\IAction
 {
 
+	private $storage;
+
+	public function __construct(\Service\Storage $storage)
+	{
+		$this->storage = $storage;
+	}
+
 	public function __invoke(\lib\Input $input): \lib\Output
 	{
-		$name = file_get_contents(__DIR__ . '/../../data/db');
+		$name = $this->storage->read();
 
 		return new \lib\Output(0, 'Привет, ' . $name);
 	}

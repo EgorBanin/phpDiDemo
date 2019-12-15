@@ -21,7 +21,7 @@ class App {
 		if ( ! class_exists($actionClassName)) {
 			return self::error(2, 'Не найден класс ' . $actionClassName);
 		}
-		$action = new $actionClassName();
+		$action = new $actionClassName(new \Service\Storage(__DIR__ . '/../../data/db'));
 		if ( ! ($action instanceof IAction)) {
 			return self::error(3, 'Класс ' . $actionClassName . ' не реализует ' . IAction::class);
 		}
